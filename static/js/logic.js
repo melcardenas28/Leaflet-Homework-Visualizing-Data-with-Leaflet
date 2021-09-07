@@ -30,12 +30,12 @@ function createFeatures(earthquakeData) {
 function createMap(earthquakes) {
     // Various Map Layers (Mapbox API) for user selection
     var satelliteMap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?" +
-      "access_token=pk.eyJ1IjoiY2ZlcnJhcmVuIiwiYSI6ImNqaHhvcW9sNjBlMmwzcHBkYzk0YXRsZ2cifQ.lzNNrQqp-E85khEiWhgq4Q");
+
     var lightMap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
-      "access_token=pk.eyJ1IjoiY2ZlcnJhcmVuIiwiYSI6ImNqaHhvcW9sNjBlMmwzcHBkYzk0YXRsZ2cifQ.lzNNrQqp-E85khEiWhgq4Q");
+
     var outdoors = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
-    "access_token=pk.eyJ1IjoiY2ZlcnJhcmVuIiwiYSI6ImNqaHhvcW9sNjBlMmwzcHBkYzk0YXRsZ2cifQ.lzNNrQqp-E85khEiWhgq4Q");
-   // Define base maps
+   
+    // Define base maps
    var baseMaps = {
     "Light Map": lightMap,
     "Outdoors": outdoors,
@@ -48,8 +48,8 @@ var overlayMaps = {
     
 // Create our map
 var myMap = L.map("map", {
-    center: [40.7, -94.5],
-    zoom: 3,
+    center: [41.2, -93.5],
+    zoom: 5,
     layers: [lightMap, earthquakes]
     });
 //Add layer control to map
@@ -81,13 +81,13 @@ function getColor(magnitude) {
     if (magnitude > 5) {
         return 'red'
     } else if (magnitude > 4) {
-        return 'orange'
+        return 'blue'
     } else if (magnitude > 3) {
         return 'yellow'
     } else if (magnitude > 2) {
-        return 'lightgreen'
-    } else if (magnitude > 1) {
         return 'green'
+    } else if (magnitude > 1) {
+        return 'orange'
     } else {
         return '#58C9CB'
     }
@@ -95,5 +95,5 @@ function getColor(magnitude) {
 
 //Create radius function
 function getRadius(magnitude) {
-    return magnitude * 25000;
+    return magnitude * 20000;
 };
